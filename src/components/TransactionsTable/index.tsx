@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { api } from '../../services/api';
+import { TransactionsContext } from '../../TransactionContext';
 import { Container } from './styles';
 interface Transaction {
   id: number;
@@ -10,6 +11,7 @@ interface Transaction {
   createdAt: string;
 }
 export function TransitionsTable() {
+  const data = useContext(TransactionsContext);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   useEffect(() => {
     api
